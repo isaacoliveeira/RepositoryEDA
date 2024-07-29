@@ -19,6 +19,14 @@ public class Aluno1 {
         return matricula;
     }
 
+    public void setNome1(String nome1) {
+        this.nome1 = nome1;
+    }
+
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
     public String toString() {
         return "Nome: " + nome1 + "\nMatricula: " + matricula;
     }

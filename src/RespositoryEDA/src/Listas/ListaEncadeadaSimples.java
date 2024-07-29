@@ -19,6 +19,7 @@ public class ListaEncadeadaSimples {
         this.size = size;
     }
 
+
     public void setHead(Nodo head) {
         this.head = head;
     }
@@ -51,7 +52,7 @@ public class ListaEncadeadaSimples {
             head = elemento;
         } else {
             Nodo elementoAnterior = this.head;
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 elementoAnterior = elementoAnterior.getProximoElemento();
             }
             elemento.setProximoElemento(elementoAnterior.getProximoElemento());
@@ -68,11 +69,11 @@ public class ListaEncadeadaSimples {
             tail = anterior;
         } else if (index == 0) {
             this.head = atual.getProximoElemento();
-            atual.setProximoElemento(null);
+            //atual.setProximoElemento(null);
         } else {
             Nodo anterior = get(index - 1);
             anterior.setProximoElemento(atual.getProximoElemento());
-            atual.setProximoElemento(null);
+            //atual.setProximoElemento(null);
         }
         size--;
     }

@@ -87,7 +87,7 @@ public class ListaEncadeadaDupla {
             elemento.setProximoElemento(head);
             head = elemento;
         } else {
-            Nodo anterior = new Nodo(valor, null);
+            //Nodo anterior = new Nodo(valor, null);
             for ( int i = 0; i < index; i++) {
                 elemento = elemento.getProximoElemento();
             }

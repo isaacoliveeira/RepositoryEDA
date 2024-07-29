@@ -4,11 +4,11 @@ public class MainDupla {
     public static void main(String[] args) {
         ListaEncadeadaDupla listaEncadeadaDupla = new ListaEncadeadaDupla();
 
-        listaEncadeadaDupla.adicionar(4);
+        listaEncadeadaDupla.adicionar(1);
+        listaEncadeadaDupla.adicionar(2);
+        listaEncadeadaDupla.adicionar(3);
         listaEncadeadaDupla.adicionar(5);
-        listaEncadeadaDupla.remover(4);
-        listaEncadeadaDupla.addIndex(7,0);
-
+        listaEncadeadaDupla.addIndex(4, 3);
 
         System.out.println("O tamanho é: " + listaEncadeadaDupla.getsize());
         System.out.println("O primeiro elemento: " + listaEncadeadaDupla.gethead().getValor());

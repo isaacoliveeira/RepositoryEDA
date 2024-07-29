@@ -4,20 +4,20 @@ import src.RespositoryEDA.src.Listas.Nodo;
 
 public class ListaEncadeada {
 
-    public Nodo primeiro;
+    public Node primeiro;
 
     public ListaEncadeada(Nodo primeiro) {
         this.primeiro = null;
     }
 
     public void inserir(Aluno dados) {
-        Nodo novo = new Nodo(dados);
+        Node novo = new Node(dados) ;
         novo.proximo = primeiro;
         primeiro = novo;
     }
 
     public Aluno buscar(int matricula) {
-        Nodo buscado = primeiro;
+        Node buscado = primeiro;
         while (buscado != null) {
             if (buscado.dados.getMatricula() == matricula) {
                 return buscado.dados;
@@ -35,7 +35,7 @@ public class ListaEncadeada {
             primeiro = primeiro.proximo;
             return;
         }
-        Nodo atual = primeiro;
+        Node atual = primeiro;
         while (atual.proximo != null) {
             if (atual.proximo.dados.getMatricula() == matricula) {
                 atual.proximo = atual.proximo.proximo;
@@ -47,7 +47,7 @@ public class ListaEncadeada {
         }
     }
     public void mostrar() {
-        Nodo atual = primeiro;
+        Node atual = primeiro;
         while (atual != null) {
             System.out.println("Matricula: " + atual.dados.getMatricula() + ", Aluno: " + atual.dados.getNome());
             atual = atual.proximo;

@@ -4,10 +4,8 @@ import src.RespositoryEDA.src.TableHash.Aluno;
 
 public class Nodo {
     public Nodo proximo;
-    public Aluno dados;
     private int valor;
     private Nodo proximoElemento;
-
     private Nodo anteriorElemento;
 
 
@@ -15,10 +13,6 @@ public class Nodo {
         this.valor = valor;
         this.proximoElemento = proximoElemento;
     }
-
-    public Nodo(Aluno dados) {
-    }
-
     public Nodo getAnteriorElemento() {
         return anteriorElemento;
     }

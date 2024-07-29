@@ -5,10 +5,8 @@ public class Main {
         ListaEncadeadaSimples listaEncadeadaSimples = new ListaEncadeadaSimples();
         listaEncadeadaSimples.add(1);
         listaEncadeadaSimples.add(2);
-        listaEncadeadaSimples.add(3);
+        listaEncadeadaSimples.addIndex(3, 2);
         listaEncadeadaSimples.add(4);
-
-        listaEncadeadaSimples.remove(3);
 //        System.out.println(listaEncadeadaSimples.getTail().getProximoElemento());
 //        System.out.println(listaEncadeadaSimples.getHead());
 
