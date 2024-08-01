@@ -69,7 +69,7 @@ public class ListaEncadeadaSimples {
             tail = anterior;
         } else if (index == 0) {
             this.head = atual.getProximoElemento();
-            //atual.setProximoElemento(null);
+            atual.setProximoElemento(null);
         } else {
             Nodo anterior = get(index - 1);
             anterior.setProximoElemento(atual.getProximoElemento());

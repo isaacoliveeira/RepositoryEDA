@@ -14,14 +14,15 @@ public class TabelaHash1 {
     }
 
     public int calcularHash(int matricula){
-        int divisor = tabela.length;
-        int hash;
+        int mod = tabela.length;
+        int hash = matricula % mod;
+        // int hash;
 
-        if (matricula == tabela.length) {
-            hash = tabela.length - 1;
-        } else {
-            hash = (matricula % divisor) - 1;
-        }
+        // if (matricula == tabela.length) {
+        //     hash = tabela.length;
+        // } else {
+        //     hash = (matricula % mod);
+        // }
         return hash;
     }
 
@@ -39,14 +40,19 @@ public class TabelaHash1 {
     public void inserirAluno(int matricula, String nome1) {
         Aluno1 aluno = new Aluno1(nome1, matricula);
         int hash = calcularHash(matricula);
+        System.out.println(hash);
+
         if (!estaCheia()) {
-            if (tabela[hash] == null || tabela[hash] == DELETED) {
+            if (tabela[hash] == null) {
                 tabela[hash] = aluno;
             } else {
-                while (tabela[hash] != null && tabela[hash] != DELETED) {
-                    hash++;
+                for (int i = hash; i < tabela.length; i++) {
+                    if (tabela[hash] == null) {
+                        tabela[i] = aluno;
+                    } else if (i == tabela.length) {
+                        redimencionar();
+                    }
                 }
-                tabela[hash] = aluno;
             }
         } else {
             redimencionar();
@@ -60,7 +66,7 @@ public class TabelaHash1 {
             }
         }
         return;
-    }
+        }
 
     private boolean estaCheia() {
         int contador = 0;
@@ -101,7 +107,10 @@ public class TabelaHash1 {
     public void mostrar() {
         for (int i = 0; i < tabela.length; i++) {
             if (tabela[i] != null) {
-                System.out.println(tabela[i].getNome1());
+                System.out.printf("nome: " + tabela[i].getNome1());
+                System.out.println();
+                System.out.printf("matricula: " + tabela[i].getMatricula());
+                System.out.println();
             } else {
                 System.out.println(tabela[i]);
             }

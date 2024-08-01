@@ -30,10 +30,11 @@ public class MainListaCircular {
         listaCircularSimples.add(3);
         listaCircularSimples.add(1);
         listaCircularSimples.add(4);
-        listaCircularSimples.remover(4);
-        listaCircularSimples.remover(1);
+        // listaCircularSimples.remover(4);
+        // listaCircularSimples.remover(1);
         listaCircularSimples.add(8);
 //        listaCircularSimples.remover(2);
+
 
 
 
