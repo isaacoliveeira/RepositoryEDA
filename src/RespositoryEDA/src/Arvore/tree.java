@@ -81,6 +81,24 @@ public class tree {
         }
     }
 
+    public boolean buscar(int valor) {
+        return buscar(raiz, valor);
+    }
+
+    public boolean buscar(No no, int valor) {
+        if (no == null) {
+            return false;
+        }
+        if (no.getValor() == valor) {
+            return true;
+        }
+        if (valor < no.getValor()) {
+            return buscar(no.getLeft(), valor);
+        } else {
+            return buscar(no.getRight(), valor);
+        }
+    }
+
     public void imprimirArvore() {
         imprimirArvore(raiz);
     }
