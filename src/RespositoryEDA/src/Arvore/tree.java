@@ -36,40 +36,49 @@ public class tree {
         }
     }
 
+
     public void removerUltimo() {
-        if (raiz != null) {
-            raiz = removerUltimo(raiz);
+        if (raiz.getRight() == null ) {
+            raiz = null;
+            return;
         }
+        removerUltimo(raiz.getRight(), raiz);
     }
 
-    private No removerUltimo(No atual) {
-        if (atual.getRight() == null) {
-            if (atual.getLeft() != null) {
-                return atual.getLeft();
-            } else {
-                return null;
+    private void removerUltimo(No no, No anterior) {
+        if(no.getRight() == null) {
+            if (no.getLeft() == null) {
+                anterior.setRight(null);
+                return;
             }
+            anterior.setRight(no.getLeft());
+            return;
         }
-        atual.setRight(removerUltimo(atual.getRight()));
-        return atual;
+        removerUltimo(no.getRight(), anterior.getRight());
     }
 
     public void removerPrimeiro() {
-        if (raiz != null) {
-            raiz = removerPrimeiro(raiz);
+        if (raiz == null) {
+            System.out.println("A árvore está vazia.");
+            return;
         }
+        if (raiz.getLeft() == null) {
+            raiz = null;
+            return;
+        }
+        removerPrimeiro(raiz.getLeft(), raiz);
     }
 
-    private No removerPrimeiro(No atual) {
-        if (atual.getLeft() == null) {
-            if (atual.getRight() != null) {
-                return atual.getRight();
+    private void removerPrimeiro(No no, No anterior) {
+        if (no.getLeft() == null) {
+            if (no.getRight() == null) {
+                anterior.setLeft(null);
             } else {
-                return null;
+                anterior.setLeft(no.getRight());
             }
+        } else {
+            removerPrimeiro(no.getLeft(), no);
         }
-        atual.setLeft(removerPrimeiro(atual.getLeft()));
-        return atual;
     }
 
     public void imprimirArvore() {
@@ -81,9 +90,9 @@ public class tree {
             System.out.println("Nó: " + atual.getValor());
 
             if (atual.getLeft() != null) {
-                System.out.println("esquerda: " + atual.getLeft().getValor());
+                System.out.println("left: " + atual.getLeft().getValor());
             } else {
-                System.out.println("esquerda: Nenhum");
+                System.out.println("left: Nenhum");
             }
 
             if (atual.getRight() != null) {

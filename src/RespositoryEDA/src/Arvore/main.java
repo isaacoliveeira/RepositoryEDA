@@ -15,6 +15,9 @@ public class main {
         teste.inserir(77);
         teste.inserir(82);
         teste.inserir(32);
-        teste.imprimirArvore();
+        printer.printTree(teste);
+        teste.removerUltimo();
+        teste.removerPrimeiro();
+        printer.printTree(teste);
     }
 }
