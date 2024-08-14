@@ -16,11 +16,6 @@ public class main {
         teste.inserir(82);
         teste.inserir(32);
         printer.printTree(teste);
-        teste.removerPrimeiro();
-        teste.removerUltimo();
-        printer.printTree(teste);
-        System.out.println("Buscando o valor 82: " + teste.buscar(82));
-
-
+        teste.posOrdem();
     }
 }

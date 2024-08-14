@@ -85,7 +85,7 @@ public class tree {
         return buscar(raiz, valor);
     }
 
-    public boolean buscar(No no, int valor) {
+    private boolean buscar(No no, int valor) {
         if (no == null) {
             return false;
         }
@@ -99,6 +99,42 @@ public class tree {
         }
     }
 
+    public void preOrdemRec() {
+        preOrdem(raiz);
+    }
+
+    private void preOrdem(No raiz) {
+        if (raiz != null) {
+            System.out.println(raiz.getValor() + " ");
+            preOrdem(raiz.getLeft());
+            preOrdem(raiz.getRight());
+        }
+    }
+
+    public void ordemRec() {
+        ordem(raiz);
+    }
+
+    private void ordem(No raiz) {
+        if (raiz != null) {
+            ordem(raiz.getLeft());
+            System.out.println(raiz.getValor());
+            ordem(raiz.getRight());
+        }
+    }
+
+    public void posOrdem() {
+        posOrdem(raiz);
+    }
+
+    private void posOrdem(No raiz) {
+        if (raiz != null) {
+            posOrdem(raiz.getLeft());
+            posOrdem(raiz.getRight());
+            System.out.println(raiz.getValor());
+        }
+    }
+ 
     public void imprimirArvore() {
         imprimirArvore(raiz);
     }
