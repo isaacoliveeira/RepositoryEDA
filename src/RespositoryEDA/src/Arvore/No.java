@@ -3,12 +3,14 @@ package src.Arvore;
 public class No {
     
     private int valor;
-    No left;
+    private No left;
     private No right;
+    private int height;
 
 
     public No(int valor) {
         this.valor = valor;
+        this.height = 1;
     }
 
     public int getValor() {
@@ -34,4 +36,13 @@ public class No {
     public void setRight(No right) {
         this.right = right;
     }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    
 }

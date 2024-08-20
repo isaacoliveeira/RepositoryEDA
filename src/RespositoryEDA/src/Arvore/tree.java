@@ -134,6 +134,163 @@ public class tree {
             System.out.println(raiz.getValor());
         }
     }
+
+    private int heigth(No valor) {
+        if (valor == null) {
+            return 0;
+        }
+        return valor.getHeight();
+    }
+    
+    private int getBalance(No valor) {
+        if (valor == null) { 
+            return 0;
+        }
+        return heigth(valor.getLeft()) - heigth(valor.getRight());
+    }
+    
+    // Rotação à direita (Right Rotation)
+    private No rightRotation(No valor) {
+        No x = valor.getLeft();
+        No y = x.getRight();
+    
+        // Realiza a rotação
+        x.setRight(valor);
+        valor.setLeft(y);
+    
+        // Atualiza as alturas
+        valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
+        x.setHeight(1 + Math.max(heigth(x.getLeft()), heigth(x.getRight())));
+    
+        return x;
+    }
+    
+    // Rotação à esquerda (Left Rotation)
+    private No leftRotation(No valor) {
+        No y = valor.getRight();
+        No x = y.getLeft();
+    
+        // Realiza a rotação
+        y.setLeft(valor);
+        valor.setRight(x);
+    
+        // Atualiza as alturas
+        valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
+        y.setHeight(1 + Math.max(heigth(y.getLeft()), heigth(y.getRight())));
+    
+        return y;
+    }
+    
+    // Rotação Dupla à esquerda (Left-Right Rotation)
+    private No leftRightRotation(No valor) {
+        valor.setLeft(rightRotation(valor.getLeft()));
+        return leftRotation(valor);
+    }
+    
+    // Rotação Dupla à direita (Right-Left Rotation)
+    private No rightLeftRotation(No valor) {
+        valor.setRight(leftRotation(valor.getRight()));
+        return rightRotation(valor);
+    }
+
+    // private int heigth(No valor) {
+    //     if (valor == null) {
+    //         return 0;
+    //     }
+    //     return valor.getHeight();
+    // }
+    
+    // private int getBalance(No valor) {
+    //     if (valor == null) {
+    //         return 0;
+    //     }
+    //     return heigth(valor.getLeft()) - heigth(valor.getRight());
+    // }
+    
+    // // Rotação à direita (Right Rotation)
+    // private No rightRotation(No valor) {
+    //     No x = valor.getLeft();
+    //     No y = x.getRight();
+    
+    //     // Realiza a rotação
+    //     x.setRight(valor);
+    //     valor.setLeft(y);
+    
+    //     // Atualiza as alturas
+    //     valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
+    //     x.setHeight(1 + Math.max(heigth(x.getLeft()), heigth(x.getRight())));
+    
+    //     return x;
+    // }
+    
+    // // Rotação à esquerda (Left Rotation)
+    // private No leftRotation(No valor) {
+    //     No y = valor.getRight();
+    //     No x = y.getLeft();
+    
+    //     // Realiza a rotação
+    //     y.setLeft(valor);
+    //     valor.setRight(x);
+    
+    //     // Atualiza as alturas
+    //     valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
+    //     y.setHeight(1 + Math.max(heigth(y.getLeft()), heigth(y.getRight())));
+    
+    //     return y;
+    // }
+    
+    // // Rotação Dupla à esquerda (Left-Right Rotation)
+    // private No leftRightRotation(No valor) {
+    //     valor.setLeft(leftRotation(valor.getLeft()));
+    //     return rightRotation(valor);
+    // }
+    
+    // // Rotação Dupla à direita (Right-Left Rotation)
+    // private No rightLeftRotation(No valor) {
+    //     valor.setRight(rightRotation(valor.getRight()));
+    //     return leftRotation(valor);
+    // }
+    
+
+    private No inserirBalaceado(No raiz, int valor) {
+        if (raiz == null) {
+            raiz = new No(valor);
+        }
+
+        if (valor < raiz.getValor()) {
+            raiz.setLeft(inserirBalaceado(raiz.getLeft(), valor));
+        } else if (valor > raiz.getValor()) {
+            raiz.setRight(inserirBalaceado(raiz.getRight(), valor));
+        } else {
+            return raiz;
+        }
+
+        raiz.setHeight(1 + Math.max(heigth(raiz.getLeft()), heigth(raiz.getRight())));
+
+        int balanco = getBalance(raiz); // altura
+
+        if (balanco > 1 && valor < raiz.getLeft().getValor()) {
+            return rightRotation(raiz);
+        }
+
+        if (balanco < -1 && valor > raiz.getRight().getValor()) {
+            return leftRotation(raiz);
+        }
+
+        if (balanco > 1 && valor > raiz.getLeft().getValor()) {
+            return leftRightRotation(raiz);
+        }
+
+        if (balanco < -1 && valor < raiz.getRight().getValor()) {
+            return rightLeftRotation(raiz);
+        }
+
+        return raiz;
+    }
+
+    public void inserirBalaceado(int valor) {
+        raiz = inserirBalaceado(raiz, valor);
+    }
  
     public void imprimirArvore() {
         imprimirArvore(raiz);

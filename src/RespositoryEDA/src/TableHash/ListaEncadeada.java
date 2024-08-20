@@ -1,12 +1,11 @@
 package src.RespositoryEDA.src.TableHash;
 
-import src.RespositoryEDA.src.Listas.Nodo;
 
 public class ListaEncadeada {
 
     public Node primeiro;
 
-    public ListaEncadeada(Nodo primeiro) {
+    public ListaEncadeada(Node primeiro) {
         this.primeiro = null;
     }
 
