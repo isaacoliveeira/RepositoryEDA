@@ -135,7 +135,7 @@ public class tree {
         }
     }
 
-    private int heigth(No valor) {
+    public int heigth(No valor) {
         if (valor == null) {
             return 0;
         }
@@ -143,29 +143,36 @@ public class tree {
     }
     
     private int getBalance(No valor) {
-        if (valor == null) { 
+        if (valor == null) {
             return 0;
         }
         return heigth(valor.getLeft()) - heigth(valor.getRight());
     }
+
+    private int maior(int a, int b) {
+        if (a > b) {
+            return a;
+        }
+        return b;
+    }
     
-    // Rotação à direita (Right Rotation)
-    private No rightRotation(No valor) {
-        No x = valor.getLeft();
-        No y = x.getRight();
+    // Rotação à direita
+    private No rightRotation(No valor) { // valor inicialmente é a raiz
+        No x = valor.getLeft(); // filho esquerdo
+        No y = x.getRight(); // filho direito do x
     
         // Realiza a rotação
-        x.setRight(valor);
-        valor.setLeft(y);
+        x.setRight(valor); //   a raiz passa a ser filho do filho
+        valor.setLeft(y); // 
     
         // Atualiza as alturas
-        valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
-        x.setHeight(1 + Math.max(heigth(x.getLeft()), heigth(x.getRight())));
+        valor.setHeight(1 + maior(heigth(valor.getLeft()), heigth(valor.getRight())));
+        x.setHeight(1 + maior(heigth(x.getLeft()), heigth(x.getRight())));
     
         return x;
     }
     
-    // Rotação à esquerda (Left Rotation)
+    // Rotação à esquerda
     private No leftRotation(No valor) {
         No y = valor.getRight();
         No x = y.getLeft();
@@ -175,81 +182,23 @@ public class tree {
         valor.setRight(x);
     
         // Atualiza as alturas
-        valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
-        y.setHeight(1 + Math.max(heigth(y.getLeft()), heigth(y.getRight())));
-    
+        valor.setHeight(1 + maior(heigth(valor.getLeft()), heigth(valor.getRight())));
+        y.setHeight(1 + maior(heigth(y.getLeft()), heigth(y.getRight())));
+
         return y;
     }
     
-    // Rotação Dupla à esquerda (Left-Right Rotation)
+    // Rotação Dupla à esquerda
     private No leftRightRotation(No valor) {
-        valor.setLeft(rightRotation(valor.getLeft()));
-        return leftRotation(valor);
-    }
-    
-    // Rotação Dupla à direita (Right-Left Rotation)
-    private No rightLeftRotation(No valor) {
-        valor.setRight(leftRotation(valor.getRight()));
+        valor.setLeft(leftRotation(valor.getLeft()));
         return rightRotation(valor);
     }
-
-    // private int heigth(No valor) {
-    //     if (valor == null) {
-    //         return 0;
-    //     }
-    //     return valor.getHeight();
-    // }
     
-    // private int getBalance(No valor) {
-    //     if (valor == null) {
-    //         return 0;
-    //     }
-    //     return heigth(valor.getLeft()) - heigth(valor.getRight());
-    // }
-    
-    // // Rotação à direita (Right Rotation)
-    // private No rightRotation(No valor) {
-    //     No x = valor.getLeft();
-    //     No y = x.getRight();
-    
-    //     // Realiza a rotação
-    //     x.setRight(valor);
-    //     valor.setLeft(y);
-    
-    //     // Atualiza as alturas
-    //     valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
-    //     x.setHeight(1 + Math.max(heigth(x.getLeft()), heigth(x.getRight())));
-    
-    //     return x;
-    // }
-    
-    // // Rotação à esquerda (Left Rotation)
-    // private No leftRotation(No valor) {
-    //     No y = valor.getRight();
-    //     No x = y.getLeft();
-    
-    //     // Realiza a rotação
-    //     y.setLeft(valor);
-    //     valor.setRight(x);
-    
-    //     // Atualiza as alturas
-    //     valor.setHeight(1 + Math.max(heigth(valor.getLeft()), heigth(valor.getRight())));
-    //     y.setHeight(1 + Math.max(heigth(y.getLeft()), heigth(y.getRight())));
-    
-    //     return y;
-    // }
-    
-    // // Rotação Dupla à esquerda (Left-Right Rotation)
-    // private No leftRightRotation(No valor) {
-    //     valor.setLeft(leftRotation(valor.getLeft()));
-    //     return rightRotation(valor);
-    // }
-    
-    // // Rotação Dupla à direita (Right-Left Rotation)
-    // private No rightLeftRotation(No valor) {
-    //     valor.setRight(rightRotation(valor.getRight()));
-    //     return leftRotation(valor);
-    // }
+    // Rotação Dupla à direita
+    private No rightLeftRotation(No valor) {
+        valor.setRight(rightRotation(valor.getRight()));
+        return leftRotation(valor);
+    }
     
 
     private No inserirBalaceado(No raiz, int valor) {
