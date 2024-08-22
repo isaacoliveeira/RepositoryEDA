@@ -12,29 +12,30 @@ public class tree {
         return raiz;
     }
 
-    public void inserir(int valor) {
-        if (raiz == null) {
-            raiz = new No(valor);
-        } else {
-            inserirRecursivo(raiz, valor);
-        }
-    }
+    // public void inserir(int valor) {
+    //     if (raiz == null) {
+    //         raiz = new No(valor);
+    //     } else {
+    //         inserirRecursivo(raiz, valor);
+    //     }
+    //     balancear(raiz);
+    // }
 
-    private void inserirRecursivo(No atual, int valor) {
-        if (valor < atual.getValor()) {
-            if (atual.getLeft() == null) {
-                atual.setLeft(new No(valor));
-            } else {
-                inserirRecursivo(atual.getLeft(), valor);
-            }
-        } else {
-            if (atual.getRight() == null) {
-                atual.setRight(new No(valor));
-            } else {
-                inserirRecursivo(atual.getRight(), valor);
-            }
-        }
-    }
+    // private void inserirRecursivo(No atual, int valor) {
+    //     if (valor < atual.getValor()) {
+    //         if (atual.getLeft() == null) {
+    //             atual.setLeft(new No(valor));
+    //         } else {
+    //             inserirRecursivo(atual.getLeft(), valor);
+    //         }
+    //     } else {
+    //         if (atual.getRight() == null) {
+    //             atual.setRight(new No(valor));
+    //         } else {
+    //             inserirRecursivo(atual.getRight(), valor);
+    //         }
+    //     }
+    // }
 
 
     public void removerUltimo() {
@@ -200,45 +201,64 @@ public class tree {
         return leftRotation(valor);
     }
     
-
-    private No inserirBalaceado(No raiz, int valor) {
+ 
+    private No balancear(No raiz) {
         if (raiz == null) {
-            raiz = new No(valor);
+            return null;
         }
-
-        if (valor < raiz.getValor()) {
-            raiz.setLeft(inserirBalaceado(raiz.getLeft(), valor));
-        } else if (valor > raiz.getValor()) {
-            raiz.setRight(inserirBalaceado(raiz.getRight(), valor));
-        } else {
-            return raiz;
+    
+        raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight())));
+    
+        int balance = getBalance(raiz);
+    
+        if (balance > 1) { //entra aqui se estiver desbalanceada
+            if (getBalance(raiz.getLeft()) >= 0) {
+                return rightRotation(raiz);
+            } else {
+                raiz.setLeft(leftRotation(raiz.getLeft()));
+                return rightRotation(raiz);
+            }
         }
-
-        raiz.setHeight(1 + Math.max(heigth(raiz.getLeft()), heigth(raiz.getRight())));
-
-        int balanco = getBalance(raiz); // altura
-
-        if (balanco > 1 && valor < raiz.getLeft().getValor()) {
-            return rightRotation(raiz);
+    
+        if (balance < -1) {
+            if (getBalance(raiz.getRight()) <= 0) {
+                return leftRotation(raiz);
+            } else {
+                raiz.setRight(rightRotation(raiz.getRight()));
+                return leftRotation(raiz);
+            }
         }
-
-        if (balanco < -1 && valor > raiz.getRight().getValor()) {
-            return leftRotation(raiz);
-        }
-
-        if (balanco > 1 && valor > raiz.getLeft().getValor()) {
-            return leftRightRotation(raiz);
-        }
-
-        if (balanco < -1 && valor < raiz.getRight().getValor()) {
-            return rightLeftRotation(raiz);
-        }
-
         return raiz;
     }
 
-    public void inserirBalaceado(int valor) {
-        raiz = inserirBalaceado(raiz, valor);
+    public void inserir(int valor) {
+        raiz = inserirNo(raiz, valor);
+    }
+    
+    private No inserirNo(No raiz, int valor) {
+        if (raiz == null) {
+            return new No(valor);
+        }
+    
+        if (valor < raiz.getValor()) {
+            raiz.setLeft(inserirNo(raiz.getLeft(), valor));
+        } else if (valor > raiz.getValor()) {
+            raiz.setRight(inserirNo(raiz.getRight(), valor));
+        } else {
+            return raiz;
+        }
+    
+        raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight())));
+    
+        return balancear(raiz);
+    }
+    
+    private No remover(No raiz, int valor) {
+        return null;
+    }
+
+    public No remover(int valor) {
+        return null;
     }
  
     public void imprimirArvore() {
