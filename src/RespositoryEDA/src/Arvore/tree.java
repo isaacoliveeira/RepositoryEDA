@@ -12,7 +12,6 @@ public class tree {
         return raiz;
     }
 
-<<<<<<< HEAD
     public void inserir(int valor) {
         if (raiz == null) {
             raiz = new No(valor);
@@ -21,32 +20,22 @@ public class tree {
         }
         balancear(raiz);
     }
-=======
-    // public void inserir(int valor) {
-    //     if (raiz == null) {
-    //         raiz = new No(valor);
-    //     } else {
-    //         inserirRecursivo(raiz, valor);
-    //     }
-    //     balancear(raiz);
-    // }
->>>>>>> 9cc944a53a955e7b777dbc5c9195ff87ca5e33b5
 
-    // private void inserirRecursivo(No atual, int valor) {
-    //     if (valor < atual.getValor()) {
-    //         if (atual.getLeft() == null) {
-    //             atual.setLeft(new No(valor));
-    //         } else {
-    //             inserirRecursivo(atual.getLeft(), valor);
-    //         }
-    //     } else {
-    //         if (atual.getRight() == null) {
-    //             atual.setRight(new No(valor));
-    //         } else {
-    //             inserirRecursivo(atual.getRight(), valor);
-    //         }
-    //     }
-    // }
+    private void inserirRecursivo(No atual, int valor) {
+        if (valor < atual.getValor()) {
+            if (atual.getLeft() == null) {
+                atual.setLeft(new No(valor));
+            } else {
+                inserirRecursivo(atual.getLeft(), valor);
+            }
+        } else {
+            if (atual.getRight() == null) {
+                atual.setRight(new No(valor));
+            } else {
+                inserirRecursivo(atual.getRight(), valor);
+            }
+        }
+    }
 
 
     public void removerUltimo() {
@@ -229,7 +218,6 @@ public class tree {
                 raiz.setLeft(leftRotation(raiz.getLeft()));
                 return rightRotation(raiz);
             }
-<<<<<<< HEAD
         }
     
         if (balance < -1) {
@@ -260,6 +248,7 @@ public class tree {
             return raiz;
         }
     
+    
         raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight())));
     
         return balancear(raiz);
@@ -281,6 +270,7 @@ public class tree {
             } else if (raiz.getRight() == null) {
                 return raiz.getLeft();
             }
+            // remover raiz
             // nó com dois filhos
             No temp = menorValor(raiz.getRight());
 
@@ -289,7 +279,7 @@ public class tree {
             raiz.setRight(remover(raiz.getRight(), temp.getValor()));;
         }
         
-        raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight())));
+        raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight()))); // nova altura da raiz
 
         return raiz;
     }
@@ -304,74 +294,31 @@ public class tree {
 
     public void remover(int valor) {
         raiz = remover(raiz, valor);
-=======
-        }
-    
-        if (balance < -1) {
-            if (getBalance(raiz.getRight()) <= 0) {
-                return leftRotation(raiz);
-            } else {
-                raiz.setRight(rightRotation(raiz.getRight()));
-                return leftRotation(raiz);
-            }
-        }
-        return raiz;
-    }
-
-    public void inserir(int valor) {
-        raiz = inserirNo(raiz, valor);
-    }
-    
-    private No inserirNo(No raiz, int valor) {
-        if (raiz == null) {
-            return new No(valor);
-        }
-    
-        if (valor < raiz.getValor()) {
-            raiz.setLeft(inserirNo(raiz.getLeft(), valor));
-        } else if (valor > raiz.getValor()) {
-            raiz.setRight(inserirNo(raiz.getRight(), valor));
-        } else {
-            return raiz;
-        }
-    
-        raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight())));
-    
-        return balancear(raiz);
-    }
-    
-    private No remover(No raiz, int valor) {
-        return null;
-    }
-
-    public No remover(int valor) {
-        return null;
->>>>>>> 9cc944a53a955e7b777dbc5c9195ff87ca5e33b5
     }
  
-    public void imprimirArvore() {
-        imprimirArvore(raiz);
-    }
+    // public void imprimirArvore() {
+    //     imprimirArvore(raiz);
+    // }
 
-    private void imprimirArvore(No atual) {
-        if (atual != null) {
-            System.out.println("Nó: " + atual.getValor());
+    // private void imprimirArvore(No atual) {
+    //     if (atual != null) {
+    //         System.out.println("Nó: " + atual.getValor());
 
-            if (atual.getLeft() != null) {
-                System.out.println("left: " + atual.getLeft().getValor());
-            } else {
-                System.out.println("left: Nenhum");
-            }
+    //         if (atual.getLeft() != null) {
+    //             System.out.println("left: " + atual.getLeft().getValor());
+    //         } else {
+    //             System.out.println("left: Nenhum");
+    //         }
 
-            if (atual.getRight() != null) {
-                System.out.println("direita: " + atual.getRight().getValor());
-            } else {
-                System.out.println("direita: Nenhum");
-            }
+    //         if (atual.getRight() != null) {
+    //             System.out.println("direita: " + atual.getRight().getValor());
+    //         } else {
+    //             System.out.println("direita: Nenhum");
+    //         }
 
-            // Recursivamente imprimir os filhos
-            imprimirArvore(atual.getLeft());
-            imprimirArvore(atual.getRight());
-        }
-    }
+    //         // Recursivamente imprimir os filhos
+    //         imprimirArvore(atual.getLeft());
+    //         imprimirArvore(atual.getRight());
+    //     }
+    // }
 }
