@@ -12,30 +12,30 @@ public class tree {
         return raiz;
     }
 
-    // public void inserir(int valor) {
-    //     if (raiz == null) {
-    //         raiz = new No(valor);
-    //     } else {
-    //         inserirRecursivo(raiz, valor);
-    //     }
-    //     balancear(raiz);
-    // }
+    public void inserir(int valor) {
+        if (raiz == null) {
+            raiz = new No(valor);
+        } else {
+            inserirRecursivo(raiz, valor);
+        }
+        balancear(raiz);
+    }
 
-    // private void inserirRecursivo(No atual, int valor) {
-    //     if (valor < atual.getValor()) {
-    //         if (atual.getLeft() == null) {
-    //             atual.setLeft(new No(valor));
-    //         } else {
-    //             inserirRecursivo(atual.getLeft(), valor);
-    //         }
-    //     } else {
-    //         if (atual.getRight() == null) {
-    //             atual.setRight(new No(valor));
-    //         } else {
-    //             inserirRecursivo(atual.getRight(), valor);
-    //         }
-    //     }
-    // }
+    private void inserirRecursivo(No atual, int valor) {
+        if (valor < atual.getValor()) {
+            if (atual.getLeft() == null) {
+                atual.setLeft(new No(valor));
+            } else {
+                inserirRecursivo(atual.getLeft(), valor);
+            }
+        } else {
+            if (atual.getRight() == null) {
+                atual.setRight(new No(valor));
+            } else {
+                inserirRecursivo(atual.getRight(), valor);
+            }
+        }
+    }
 
 
     public void removerUltimo() {
@@ -231,7 +231,7 @@ public class tree {
         return raiz;
     }
 
-    public void inserir(int valor) {
+    public void inserirBalanceado(int valor) {
         raiz = inserirNo(raiz, valor);
     }
     
@@ -253,12 +253,45 @@ public class tree {
         return balancear(raiz);
     }
     
+
     private No remover(No raiz, int valor) {
-        return null;
+        if (raiz == null) {
+            return null;
+        }
+
+        if (valor < raiz.getValor()) { // os nó nao possuem filhos
+            raiz.setLeft(remover(raiz.getLeft(), valor));
+        } else if (valor > raiz.getValor()) {   // os nó nao possuem filhos
+            raiz.setRight(remover(raiz.getRight(), valor));
+        } else { 
+            if (raiz.getLeft() == null) {
+                return raiz.getRight();
+            } else if (raiz.getRight() == null) {
+                return raiz.getLeft();
+            }
+            // nó com dois filhos
+            No temp = menorValor(raiz.getRight());
+
+            raiz.setValor(temp.getValor());
+
+            raiz.setRight(remover(raiz.getRight(), temp.getValor()));;
+        }
+        
+        raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight())));
+
+        return raiz;
     }
 
-    public No remover(int valor) {
-        return null;
+    private No menorValor(No valor) {
+        No proximo = valor;
+        while (proximo.getLeft() != null) {
+            proximo = proximo.getLeft();
+        }
+        return proximo;
+    }
+
+    public void remover(int valor) {
+        raiz = remover(raiz, valor);
     }
  
     public void imprimirArvore() {
