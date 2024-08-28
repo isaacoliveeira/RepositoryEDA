@@ -1,4 +1,4 @@
-package src.Arvore;
+package src.Arvores;
 
 public class main {
     public static void main(String[] args) {
@@ -13,3 +13,4 @@ public class main {
         printer.printTree(teste);
     }
 }
+

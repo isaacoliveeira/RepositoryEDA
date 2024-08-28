@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.Listas;
+package src.Listas;
 
 public class ListaCircularDupla {
     private Nodo head;

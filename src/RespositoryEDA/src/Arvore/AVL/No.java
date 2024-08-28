@@ -1,4 +1,4 @@
-package src.Arvore;
+package src.Arvores;
 
 public class No {
     

@@ -1,6 +1,4 @@
-package src.RespositoryEDA.src.Listas;
-
-import src.RespositoryEDA.src.TableHash.Aluno;
+package src.Listas;
 
 public class Nodo {
     public Nodo proximo;

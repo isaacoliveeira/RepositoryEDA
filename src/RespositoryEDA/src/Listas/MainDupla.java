@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.Listas;
+package src.Listas;
 
 public class MainDupla {
     public static void main(String[] args) {

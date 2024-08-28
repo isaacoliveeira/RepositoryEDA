@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.TabelaHash1;
+package src.TabelaHash1;
 
 public class TabelaHash1 {
     private Aluno1[] tabela = new Aluno1[5];

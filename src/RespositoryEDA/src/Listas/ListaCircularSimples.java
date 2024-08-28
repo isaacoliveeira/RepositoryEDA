@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.Listas;
+package src.Listas;
 
 public class ListaCircularSimples {
 
@@ -19,13 +19,13 @@ public class ListaCircularSimples {
         this.head = head;
     }
 
-//    public Nodo gettail() {
-//        return tail;
-//    }
-//
-//    public void settail(Nodo tail) {
-//        this.tail = tail;
-//    }
+   public Nodo gettail() {
+       return tail;
+   }
+
+   public void settail(Nodo tail) {
+       this.tail = tail;
+   }
 
     public int getsize() {
         return size;

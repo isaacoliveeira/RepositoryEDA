@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.TableHash;
+package src.TableHash;
 
 public class Node {
 

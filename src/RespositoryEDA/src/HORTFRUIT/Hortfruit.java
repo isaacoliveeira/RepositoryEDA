@@ -1,6 +1,5 @@
 package src.HORTFRUIT;
 
-import src.HORTFRUIT.NovoProduto;
 
 public class Hortfruit {
     private NovoProduto primeiro;

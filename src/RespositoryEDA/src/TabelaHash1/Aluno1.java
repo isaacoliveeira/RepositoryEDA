@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.TabelaHash1;
+package src.TabelaHash1;
 
 public class Aluno1 {
 

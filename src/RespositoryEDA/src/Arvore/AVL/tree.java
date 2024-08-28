@@ -1,4 +1,4 @@
-package src.Arvore;
+package src.Arvores;
 
 public class tree {
 
@@ -272,12 +272,13 @@ public class tree {
             }
             // remover raiz
             // nó com dois filhos
-            No temp = menorValor(raiz.getRight());
+            No temp = menorValor(raiz.getRight()); //o sucessor da raiz é o menor valor da direita
 
-            raiz.setValor(temp.getValor());
+            raiz.setValor(temp.getValor()); // o valor da raiz passara a ser o seu sucessor, que esta guardado na varial temp
 
             raiz.setRight(remover(raiz.getRight(), temp.getValor()));;
         }
+        
         
         raiz.setHeight(1 + maior(heigth(raiz.getLeft()), heigth(raiz.getRight()))); // nova altura da raiz
 

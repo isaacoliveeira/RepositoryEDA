@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.Listas;
+package src.Listas;
 
 public class ListaEncadeadaDupla {
     private Nodo head;

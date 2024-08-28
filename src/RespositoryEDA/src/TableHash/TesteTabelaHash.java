@@ -1,4 +1,4 @@
-package src.RespositoryEDA.src.TableHash;
+package src.TableHash;
 
 //
 public class TesteTabelaHash {
@@ -8,7 +8,7 @@ public class TesteTabelaHash {
         Aluno aluno1 = new Aluno ("João",123);
         Aluno aluno2 = new Aluno( "Maria",456);
         Aluno aluno3 = new Aluno( "José",789);
-        Aluno aluno4 = new Aluno("isaac", 254);
+        //Aluno aluno4 = new Aluno("isaac", 254);
         Aluno aluno5 = new Aluno("kaik", 287);
 
         tabelaHash.inserir(aluno1);

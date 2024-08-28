@@ -1,7 +1,5 @@
 package src.HORTFRUIT;
 
-import src.HORTFRUIT.Hortfruit;
-
 import java.util.Scanner;
 
 public class HortfruitMain {

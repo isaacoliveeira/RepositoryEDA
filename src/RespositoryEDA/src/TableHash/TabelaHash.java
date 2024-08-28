@@ -1,9 +1,9 @@
-package src.RespositoryEDA.src.TableHash;
+package src.TableHash;
 
 public class TabelaHash {
     private ListaEncadeada[] tabela;
 
-    private int tamanho;
+    //private int tamanho;
     private static final int TAMANHO = 7;
 
     public TabelaHash() {
