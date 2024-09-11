@@ -1,10 +1,8 @@
-package src.Arvore.AVL.B;
 
 public class TreeB {
     private No raiz;
     private int ordem;
 
-<<<<<<< HEAD
     public TreeB(int ordem) {
         this.ordem = ordem;
         this.raiz = new No(ordem, true);
@@ -13,17 +11,6 @@ public class TreeB {
     public No getRaiz() {
         return raiz;
     }
-=======
-    public TreeB(int ordem) { this.raiz = null; this.ordem = ordem; }
-
-    public No getRaiz() { return raiz;}
-
-    public void inserir(int valor) {
-        if (raiz == null) {
-            raiz = new No(ordem, true);
-            raiz.getElemento()[0] = valor;
-        } else {
->>>>>>> a6e5fe0387fdbf0213da1fcf51c7239403f24c67
 
     public void inserir(int valor) {
         No raiz = this.raiz;
@@ -37,11 +24,6 @@ public class TreeB {
             inserirNaoCheio(raiz, valor);
         }
     }
-<<<<<<< HEAD
-=======
-
-    public void inserirElemento(No no, int elementos) {
->>>>>>> a6e5fe0387fdbf0213da1fcf51c7239403f24c67
 
     private void inserirNaoCheio(No no, int chave) {
         int i = no.getElementos().size() - 1;
