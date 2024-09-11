@@ -1,4 +1,7 @@
-package src.Arvores;
+package src.Arvore.AVL;
+
+
+
 
 public class main {
     public static void main(String[] args) {

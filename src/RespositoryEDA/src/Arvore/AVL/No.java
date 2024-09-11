@@ -1,4 +1,5 @@
-package src.Arvores;
+package src.Arvore.AVL;
+
 
 public class No {
     
